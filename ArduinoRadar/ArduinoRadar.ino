@@ -8,20 +8,17 @@ Servo servo2;
 // Define the servo pin:
 int servo1Pin = 9;
 int servo2Pin = 10;
-/*
-define servo1Pin 9;
-define servo2Pin 10;
-*/
-// Create a variable to store the servo position:
-int angle = 0;
-int verAngle = 180;
 
 // defines pins numbers
 const int trigPin = 6;
 const int echoPin = 7;
+
 // defines variables
+int angle = 0;
+int verAngle = 180;
 long duration;
 int distance;
+int pointArray[3];
 
 void setup()
 {
@@ -36,6 +33,7 @@ void setup()
     //Tell servo to go to this angle
     servo1.write(0);
     servo2.write(180);
+    pointArray[1] = 180;
     delay(1000);
 }
 
@@ -45,8 +43,10 @@ void loop()
     for (angle = 0; angle <= 180; angle += 1)
     {
         Sonar();
-        Serial.print("HorizonAngle: ");
-        Serial.println(angle);
+        printArray();
+//        Serial.print("HorizonAngle: ");
+//        Serial.println(angle);
+        pointArray[0] = angle;
         servo1.write(angle);
         delay(10);
     }
@@ -55,8 +55,10 @@ void loop()
     for (angle = 180; angle >= 0; angle -= 1)
     {
         Sonar();
-        Serial.print("HorizonAngle: ");
-        Serial.println(angle);
+        printArray();
+//        Serial.print("HorizonAngle: ");
+//        Serial.println(angle);
+        pointArray[0] = angle;
         servo1.write(angle);
         delay(10);
     }
@@ -65,8 +67,9 @@ void loop()
 //Move vertical servo up by one degree
 void MoveUp()
 {
-    Serial.print("verAngle: ");
-    Serial.println(verAngle);
+//    Serial.print("verAngle: ");
+//    Serial.println(verAngle);
+    pointArray[1] = verAngle;
     servo2.write(verAngle);
     verAngle = verAngle - 10;
 }
@@ -85,6 +88,22 @@ void Sonar()
     // Calculating the distance
     distance = duration * 0.034 / 2;
     // Prints the distance on the Serial Monitor
-    Serial.print("Distance: ");
-    Serial.println(distance);
+//    Serial.print("Distance: ");
+//    Serial.println(distance);
+    pointArray[2] = distance;
+}
+
+void printArray()
+{
+        Serial.print("[");
+        for(int i = 0; i < 3; i++)
+        {
+        
+          Serial.print(pointArray[i]);
+          if (i!=2) {
+            Serial.print(", ");
+            }
+        }
+        Serial.print("]");
+        Serial.println();
 }
