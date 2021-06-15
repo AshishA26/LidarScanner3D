@@ -95,15 +95,15 @@ void Sonar()
 
 void printArray()
 {
-        Serial.print("[");
+      //  Serial.print("[");
         for(int i = 0; i < 3; i++)
         {
         
           Serial.print(pointArray[i]);
           if (i!=2) {
-            Serial.print(", ");
+            Serial.print(" ");
             }
         }
-        Serial.print("]");
+      //  Serial.print("]");
         Serial.println();
 }
