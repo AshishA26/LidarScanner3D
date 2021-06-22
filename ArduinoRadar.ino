@@ -6,8 +6,9 @@
 Servo servo1;
 Servo servo2;
 // Define the servo pin:
-int servo1Pin = 9;
-int servo2Pin = 10;
+
+//int servo1Pin = 9;
+//int servo2Pin = 10; THESE WERE SOMEHOW CAUSING THE PROBLEM OF THE 2 BIG SERVOS NOT TO WORK, ONLY ONE OF THEM HAD WORKED
 
 // defines pins numbers
 const int trigPin = 6;
@@ -27,8 +28,8 @@ void setup()
     Serial.begin(9600);       // Starts the serial communication
 
     // Attach the Servo variable to a pin:
-    servo1.attach(servo1Pin);
-    servo2.attach(servo2Pin);
+    servo1.attach(9);
+    servo2.attach(10);
 
     //Tell servo to go to this angle
     servo1.write(0);
@@ -42,7 +43,7 @@ void loop()
     // Sweep from 0 to 180 degrees:
     for (angle = 0; angle <= 180; angle += 1)
     {
-        Sonar();
+    //    Sonar();
         printArray();
 //        Serial.print("HorizonAngle: ");
 //        Serial.println(angle);
@@ -54,7 +55,7 @@ void loop()
     // And back from 180 to 0 degrees:
     for (angle = 180; angle >= 0; angle -= 1)
     {
-        Sonar();
+     //   Sonar();
         printArray();
 //        Serial.print("HorizonAngle: ");
 //        Serial.println(angle);
@@ -69,9 +70,10 @@ void MoveUp()
 {
 //    Serial.print("verAngle: ");
 //    Serial.println(verAngle);
+    verAngle = verAngle - 10;
     pointArray[1] = verAngle;
     servo2.write(verAngle);
-    verAngle = verAngle - 10;
+
 }
 
 void Sonar()
