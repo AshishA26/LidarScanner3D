@@ -5,8 +5,8 @@
 // Create a new servo object:
 Servo servo1;
 Servo servo2;
-// Define the servo pin:
 
+// Define the servo pin:
 //int servo1Pin = 9;
 //int servo2Pin = 10; THESE WERE SOMEHOW CAUSING THE PROBLEM OF THE 2 BIG SERVOS NOT TO WORK, ONLY ONE OF THEM HAD WORKED
 
@@ -15,8 +15,8 @@ const int trigPin = 6;
 const int echoPin = 7;
 
 // defines variables
-int angle = 0;
-int verAngle = 180;
+int angle = 500;
+int verAngle = 2500;
 long duration;
 int distance;
 int pointArray[3];
@@ -32,48 +32,43 @@ void setup()
     servo2.attach(10);
 
     //Tell servo to go to this angle
-    servo1.write(0);
-    servo2.write(180);
-    pointArray[1] = 180;
+    servo1.writeMicroseconds(angle);
+    servo2.writeMicroseconds(verAngle);
+    pointArray[0] = angle;
+    pointArray[1] = verAngle;
     delay(1000);
 }
 
 void loop()
 {
-    // Sweep from 0 to 180 degrees:
-    for (angle = 0; angle <= 180; angle += 1)
+    // Sweep from 0 to 2500 degrees:
+    for (angle = 500; angle <= 2500; angle += 11)
     {
     //    Sonar();
         printArray();
-//        Serial.print("HorizonAngle: ");
-//        Serial.println(angle);
         pointArray[0] = angle;
-        servo1.write(angle);
-        delay(10);
+        servo1.writeMicroseconds(angle);
+        delay(0);
     }
     MoveUp();
-    // And back from 180 to 0 degrees:
-    for (angle = 180; angle >= 0; angle -= 1)
+    // And back from 2500 to 0 degrees:
+    for (angle = 2500; angle >= 500; angle -= 11)
     {
      //   Sonar();
         printArray();
-//        Serial.print("HorizonAngle: ");
-//        Serial.println(angle);
         pointArray[0] = angle;
-        servo1.write(angle);
-        delay(10);
+        servo1.writeMicroseconds(angle);
+        delay(0);
     }
     MoveUp();
 }
 //Move vertical servo up by one degree
 void MoveUp()
 {
-//    Serial.print("verAngle: ");
-//    Serial.println(verAngle);
-    verAngle = verAngle - 10;
+    verAngle = verAngle - 100;
+    servo2.writeMicroseconds(verAngle);
     pointArray[1] = verAngle;
-    servo2.write(verAngle);
-
+    delay(10);
 }
 
 void Sonar()
