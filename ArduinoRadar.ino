@@ -43,6 +43,7 @@ void setup()
 
 void loop()
 {
+  if (verAngle>1000) {
     // Sweep from 0 to 2500 degrees:
     for (angle = 500; angle <= 2500; angle += 5)
     {
@@ -67,8 +68,7 @@ void loop()
         delay(0);
     }
     MoveUp();
-
-    
+  }
 }
 //Move vertical servo up by one degree
 void MoveUp()
