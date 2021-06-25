@@ -16,10 +16,12 @@ const int echoPin = 7;
 
 // defines variables
 int angle = 500;
-int verAngle = 2500;
+int verAngle = 2000;
 long duration;
 int distance;
 int pointArray[3];
+int mapAngle;
+int mapVerAngle;
 
 void setup()
 {
@@ -34,40 +36,48 @@ void setup()
     //Tell servo to go to this angle
     servo1.writeMicroseconds(angle);
     servo2.writeMicroseconds(verAngle);
-    pointArray[0] = angle;
-    pointArray[1] = verAngle;
+    pointArray[0] = 0;
+    pointArray[1] = 134;
     delay(1000);
 }
 
 void loop()
 {
     // Sweep from 0 to 2500 degrees:
-    for (angle = 500; angle <= 2500; angle += 11)
+    for (angle = 500; angle <= 2500; angle += 5)
     {
-    //    Sonar();
+        Sonar();
+        mapAngle = angle;
+        mapAngle = map(mapAngle, 500, 2500, 0, 180); 
         printArray();
-        pointArray[0] = angle;
+        pointArray[0] = mapAngle;
         servo1.writeMicroseconds(angle);
         delay(0);
     }
     MoveUp();
     // And back from 2500 to 0 degrees:
-    for (angle = 2500; angle >= 500; angle -= 11)
+    for (angle = 2500; angle >= 500; angle -= 5)
     {
-     //   Sonar();
+        Sonar();
+        mapAngle = angle;
+        mapAngle = map(mapAngle, 500, 2500, 0, 180);
         printArray();
-        pointArray[0] = angle;
+        pointArray[0] = mapAngle;
         servo1.writeMicroseconds(angle);
         delay(0);
     }
     MoveUp();
+
+    
 }
 //Move vertical servo up by one degree
 void MoveUp()
 {
-    verAngle = verAngle - 100;
+    verAngle = verAngle - 5;
     servo2.writeMicroseconds(verAngle);
-    pointArray[1] = verAngle;
+    mapVerAngle = verAngle;
+    mapVerAngle = map(mapVerAngle, 500, 2500, 0, 180); 
+    pointArray[1] = mapVerAngle;
     delay(10);
 }
 
