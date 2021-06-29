@@ -15,13 +15,14 @@ const int trigPin = 6;
 const int echoPin = 7;
 
 // defines variables
-int angle = 500;
-int verAngle = 2000;
+int angle = 800;
+int verAngle = 1500;
 long duration;
 int distance;
 int pointArray[3];
 int mapAngle;
 int mapVerAngle;
+int mapStartVerAngle;
 
 void setup()
 {
@@ -37,7 +38,11 @@ void setup()
     servo1.writeMicroseconds(angle);
     servo2.writeMicroseconds(verAngle);
     pointArray[0] = 0;
-    pointArray[1] = 134;
+
+        mapStartVerAngle = verAngle;
+        mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 0, 180); 
+    
+    pointArray[1] = mapStartVerAngle;
     delay(1000);
 }
 
@@ -45,7 +50,7 @@ void loop()
 {
   if (verAngle>1000) {
     // Sweep from 0 to 2500 degrees:
-    for (angle = 500; angle <= 2500; angle += 5)
+    for (angle = 800; angle <= 2200; angle += 5)
     {
         Sonar();
         mapAngle = angle;
@@ -57,7 +62,7 @@ void loop()
     }
     MoveUp();
     // And back from 2500 to 0 degrees:
-    for (angle = 2500; angle >= 500; angle -= 5)
+    for (angle = 2200; angle >= 800; angle -= 5)
     {
         Sonar();
         mapAngle = angle;
@@ -68,6 +73,9 @@ void loop()
         delay(0);
     }
     MoveUp();
+  }
+  else {
+    Serial.println("End");
   }
 }
 //Move vertical servo up by one degree
