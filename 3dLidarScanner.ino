@@ -1,14 +1,20 @@
+//#include <PWMServo.h>
+
 //*************************************************3D RADAR CODE*************************************************//
+
+//************************************************************************//
 
 // Include libraries:
 #include <Servo.h>
-#include<SoftwareSerial.h>
+//#include<SoftwareSerial.h>
 //Create serial object;
-SoftwareSerial mySerial(10, 9); //Set Transmit and Recieve pins, pin 2 is RX, pin 3 is TX
+//SoftwareSerial Serial3(10, 9); //Set Transmit and Recieve pins, pin 2 is RX, pin 3 is TX
+//SoftwareSerial Serial3(15,14);
 // Create a new servo object:
 Servo servo1;
 Servo servo2;
-
+//PWMServo servo1;
+//PWMServo servo2;
 
 // Define the servo pin:
 //int servo1Pin = 9;
@@ -23,7 +29,7 @@ const int HEADER = 0x59;
 
 // defines variables
 int angle = 500;
-int verAngle = 2000;
+int verAngle = 2500;
 long duration;
 int distance;
 int pointArray[3];
@@ -33,16 +39,16 @@ int mapStartVerAngle;
 
 void setup() {
   Serial.begin(115200); // Starts the serial communication
-  mySerial.begin(115200);
+  Serial3.begin(115200);
   Serial.print("start");
 
   // Attach the Servo variable to a pin:
-  servo1.attach(5);
-  servo2.attach(6);
+  servo1.attach(10);
+  servo2.attach(9);
 
   //Tell servo to go to this angle
-  servo1.writeMicroseconds(angle);
-  servo2.writeMicroseconds(verAngle);
+  servo1.write(angle);
+  servo2.write(verAngle);
   pointArray[0] = 0;
 
   mapStartVerAngle = verAngle;
@@ -54,34 +60,34 @@ void setup() {
 
 void loop() {
   // Sweep from 0 to 2500 degrees:
-  for (angle = 500; angle <= 2500; angle += 5)
+  for (angle = 500; angle <= 2500; angle += 7)
   {
     Sonar();
     mapAngle = angle;
     mapAngle = map(mapAngle, 500, 2500, 0, 180);
     printArray();
     pointArray[0] = mapAngle;
-    servo1.writeMicroseconds(angle);
+    servo1.write(angle);
     delay(10);
   }
   MoveUp();
   // And back from 2500 to 0 degrees:
-  for (angle = 2500; angle >= 500; angle -= 5)
+  for (angle = 2500; angle >= 500; angle -= 7)
   {
     Sonar();
     mapAngle = angle;
     mapAngle = map(mapAngle, 500, 2500, 0, 180);
     printArray();
     pointArray[0] = mapAngle;
-    servo1.writeMicroseconds(angle);
+    servo1.write(angle);
     delay(10);
   }
   MoveUp();
 }
 //Move vertical servo up by one degree
 void MoveUp() {
-  verAngle = verAngle - 5;
-  servo2.writeMicroseconds(verAngle);
+  verAngle = verAngle - 50;
+  servo2.write(verAngle);
   mapVerAngle = verAngle;
   mapVerAngle = map(mapVerAngle, 500, 2500, 0, 180);
   pointArray[1] = mapVerAngle;
@@ -89,22 +95,22 @@ void MoveUp() {
 }
 
 void Sonar() {
-  if (mySerial.available()) {
-    if (mySerial.read() == HEADER) {
+  if (Serial3.available()) {
+    if (Serial3.read() == HEADER) {
       uart[0] = HEADER;
-      if (mySerial.read() == HEADER) {
+      if (Serial3.read() == HEADER) {
         uart[1] = HEADER;
         for (i = 2; i < 9; i++) {
-          uart[i] = mySerial.read();
+          uart[i] = Serial3.read();
         }
         check = uart[0] + uart[1] + uart[2] + uart[3] + uart[4] + uart[5] + uart[6] + uart[7];
         if (uart[8] == (check & 0xff)) {
           dist = uart[2] + uart[3] * 256;
           strength = uart[4] + uart[5] * 256;
-          Serial.print(dist);
-          Serial.print('\n');
-          delay(0);
+//          Serial.print(dist);
+//          Serial.print('\n');
           pointArray[2] = dist;
+          delay(10);
         }
       }
     }
