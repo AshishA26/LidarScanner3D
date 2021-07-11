@@ -8,7 +8,7 @@ import math
 #fig = plt.figure()
 #ax = plt.axes(projection="3d")
 
-ser = serial.Serial('COM3', 9600, timeout=1)
+ser = serial.Serial('COM3', 115200, timeout=1)
 time.sleep(2)
 x_data=[]
 y_data=[]

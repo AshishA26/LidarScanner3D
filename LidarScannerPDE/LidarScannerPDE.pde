@@ -42,17 +42,18 @@ void draw() {
   if (input != null) {
     String[] components = split(input, ' ');
 
-    float thetaDEG = float(components[0]);
-    float thetaRAD = thetaDEG * PI/180;
-    float alphaDEG = float(components[1]);
-    float alphaRAD = alphaDEG * PI/180;
-    float r = float(components[2]);
-
-    float x_point = r*cos(alphaRAD)*cos(thetaRAD);
-    float y_point = r*cos(alphaRAD)*sin(thetaRAD);
-    float z_point = r*sin(alphaRAD);
-
     if (components.length == 3) {
+
+      float thetaDEG = float(components[0]);
+      float thetaRAD = thetaDEG * PI/180;
+      float alphaDEG = float(components[1]);
+      float alphaRAD = alphaDEG * PI/180;
+      float r = float(components[2]);
+
+      float x_point = r*cos(alphaRAD)*cos(thetaRAD);
+      float y_point = r*cos(alphaRAD)*sin(thetaRAD);
+      float z_point = r*sin(alphaRAD);
+      
       vectors.add(new PVector(x_point, y_point, z_point));
     }
   }
