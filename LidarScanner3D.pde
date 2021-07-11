@@ -1,4 +1,4 @@
-// LidarScanner.pde Processing sketch
+// LidarScanner.pde Processing sketch. Credit for base processing code goes to:
 // http://www.qcontinuum.org/lidar
 
 // Load sketch into Processing, available from:
