@@ -28,11 +28,11 @@ void loop() {
     // in steps of 1 degree
     myservo.writeMicroseconds(pos);              // tell servo to go to position in variable 'pos'
     myservo2.writeMicroseconds(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
+    delay(6);                       // waits 15ms for the servo to reach the position
   }
   for (pos = 2500; pos >= 500; pos -= 7) { // goes from 180 degrees to 0 degrees
     myservo.writeMicroseconds(pos);              // tell servo to go to position in variable 'pos'
     myservo2.writeMicroseconds(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
+    delay(6);                       // waits 15ms for the servo to reach the position
   }
 }

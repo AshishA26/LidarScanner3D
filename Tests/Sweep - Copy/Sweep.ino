@@ -42,32 +42,38 @@ Servo servo1;
 Servo servo2;
 
 // defines variables
-int angle = 600;
+int angle = 500;
+int verAngle = 2000;
 long duration;
 int distance;
 
 void setup() {
-  servo1.attach(9);
-  servo2.attach(10);
+  servo1.attach(5);
+  servo2.attach(6);
 
   //Tell servo to go to this angle
   servo1.writeMicroseconds(angle);
-  servo2.writeMicroseconds(angle);
+  servo2.writeMicroseconds(verAngle);
   delay(1000);
 }
 
 void loop() {
-  for (angle = 600; angle <= 2400; angle += 5)
+  for (angle = 500; angle <= 2500; angle += 5)
   {
     servo1.writeMicroseconds(angle);
-    servo2.writeMicroseconds(angle);
-    delay(15);
+    delay(10);
   }
-  for (angle = 2400; angle >= 600; angle -= 5)
+  MoveUp();
+  for (angle = 2500; angle >= 500; angle -= 5)
   {
     servo1.writeMicroseconds(angle);
-    servo2.writeMicroseconds(angle);
-    delay(15);
+    delay(10);
   }
+  MoveUp();
 }
 //Move vertical servo up by one degree
+void MoveUp() {
+  verAngle = verAngle - 5;
+  servo2.writeMicroseconds(verAngle);
+  delay(10);
+}
