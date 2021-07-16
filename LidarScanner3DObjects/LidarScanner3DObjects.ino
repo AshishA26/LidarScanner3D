@@ -66,7 +66,7 @@ void loop() {
       printArray();
       pointArray[0] = mapAngle;
       servo1.writeMicroseconds(angle);
-      delay(10);
+      delay(50);
     }
     MoveUp();
     // And back from 2500 to 0 degrees:
@@ -78,7 +78,7 @@ void loop() {
       printArray();
       pointArray[0] = mapAngle;
       servo1.writeMicroseconds(angle);
-      delay(10);
+      delay(50);
     }
     MoveUp();
   }
@@ -91,7 +91,7 @@ void MoveUp() {
     mapVerAngle = verAngle;
     mapVerAngle = map(mapVerAngle, 500, 2500, -90, 180);
     pointArray[1] = mapVerAngle;
-    delay(10);
+    delay(20);
   }
 }
 
