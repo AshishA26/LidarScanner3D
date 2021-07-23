@@ -22,9 +22,9 @@ const int HEADER = 0x59;
 #define SAMPLES 5
 
 // defines variables
-int angle = 1350; // For short scan, I did 1350
-int verAngle = 1750; // For short scan I did 1850 // I wonder if this number is causing the weird upwards curve in the visualization
-int verAngleStop = 1100; //For short scan I did 1500
+int angle = 600; // For short scan, I did 1350
+int verAngle = 1900; // For short scan I did 1850 // I wonder if this number is causing the weird upwards curve in the visualization NOPE
+int verAngleStop = 1150; //For short scan I did 1500
 long duration;
 int distance;
 int pointArray[3];
