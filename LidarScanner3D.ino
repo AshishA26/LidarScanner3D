@@ -22,9 +22,9 @@ const int HEADER = 0x59;
 #define SAMPLES 5
 
 // defines variables
-int angle = 1350;
-//int verAngle = 1800;
-int verAngle = 1750;
+int angle = 1350; // For short scan, I did 1350
+int verAngle = 1750; // For short scan I did 1850 // I wonder if this number is causing the weird upwards curve in the visualization
+int verAngleStop = 1100; //For short scan I did 1500
 long duration;
 int distance;
 int pointArray[3];
@@ -47,17 +47,17 @@ void setup() {
   pointArray[0] = 0;
 
   mapStartVerAngle = verAngle;
-  mapStartVerAngle = map(mapStartVerAngle, 500, 2500, -90, 180);
+  mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
 
-  //pointArray[1] = mapStartVerAngle;
-  pointArray[1] = 0;
+  pointArray[1] = mapStartVerAngle;
   delay(1000);
 }
 
 void loop() {
   // Sweep from 0 to 2500 degrees:
-  if (verAngle >= 1500) {
-    for (angle = 1350; angle <= 1600; angle += 7)
+  if (verAngle >= verAngleStop) {
+    // for short scan, I did 1350 to 1700
+    for (angle = 600; angle <= 2400; angle += 7)
     {
       pointArray[2] = SmoothLidarReading();
       mapAngle = angle;
@@ -69,7 +69,7 @@ void loop() {
     }
     MoveUp();
     // And back from 2500 to 0 degrees:
-    for (angle = 1600; angle >= 1350; angle -= 7)
+    for (angle = 2400; angle >= 600; angle -= 7)
     {
       pointArray[2] = SmoothLidarReading();
       mapAngle = angle;
@@ -84,14 +84,14 @@ void loop() {
 }
 //Move vertical servo up by one degree
 void MoveUp() {
-  //  if (verAngle >= 1500) {
-  //    verAngle = verAngle - 7;
-  //    servo2.writeMicroseconds(verAngle);
-  //    mapVerAngle = verAngle;
-  //    mapVerAngle = map(mapVerAngle, 500, 2500, -90, 180);
-  //    pointArray[1] = mapVerAngle;
-  //    delay(20);
-  //  }
+   if (verAngle >= verAngleStop) {
+     verAngle = verAngle - 7;
+     servo2.writeMicroseconds(verAngle);
+     mapVerAngle = verAngle;
+     mapVerAngle = map(mapVerAngle, 500, 2500, 180, -90);
+     pointArray[1] = mapVerAngle;
+     delay(20);
+   }
 }
 
 int LidarReading() {
@@ -132,7 +132,6 @@ float SmoothLidarReading() {
 }
 
 void printArray() {
-//  Serial.println(pointArray[2]);
     for (int i = 0; i < 3; i++) {
       Serial.print(pointArray[i]);
       if (i != 2) {
