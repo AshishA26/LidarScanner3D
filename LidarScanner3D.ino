@@ -22,12 +22,12 @@ const int HEADER = 0x59;
 #define SAMPLES 5
 
 // defines variables
-int angle = 1150; // For short scan, I did 1350, for room 600, for sofa 1150
-int verAngle = 2000; // For short scan I did 1850, for room 1900, for sofa 2000
-int verAngleStop = 1550; //For short scan I did 1500, for room 1150, for sofa 1550
-int angleFrom = 1150; // for short scan, I did 1350, for room 600, for sofa 1150
-int angleTo = 1900; // for short scan, I did 1700, for room 2400, for sofa 1900
-int horizonDelay = 100;
+int angle = 600; // For short scan, I did 1350, for room 600, for sofa 1150
+int verAngle = 1800; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
+int verAngleStop = 1150; //For short scan I did 1500, for room 1150, for sofa 1550
+int angleFrom = 600; // for short scan, I did 1350, for room 600, for sofa 1150
+int angleTo = 2400; // for short scan, I did 1700, for room 2400, for sofa 1900
+int horizonDelay = 50;
 long duration;
 int distance;
 int pointArray[3];
