@@ -21,14 +21,17 @@ const int HEADER = 0x59;
 #define LIDAR_MAX_DIST 1200 // in cm
 #define SAMPLES 5
 
+// This value changes the ranges and everything
+String scanType = "sofa"; // say either room or sofa
+
 // defines variables
 int angle = 1150; // For short scan, I did 1350, for room 600, for sofa 1150
 int verAngle = 2000; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
 int verAngleStop = 1550; //For short scan I did 1500, for room 1150, for sofa 1550
 int angleFrom = 1150; // for short scan, I did 1350, for room 600, for sofa 1150
 int angleTo = 1900; // for short scan, I did 1700, for room 2400, for sofa 1900
+
 int horizonDelay = 50;
-String scanType = "sofa"; // say either room or sofa
 long duration;
 int distance;
 int pointArray[3];
@@ -51,6 +54,21 @@ void setup() {
 
   mapStartVerAngle = verAngle;
   mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
+
+  if (scanType == "sofa") {
+    angle = 1150;
+    verAngle = 2000;
+    verAngleStop = 1550;
+    angleFrom = 1150;
+    angleTo = 1900;
+  }
+  else if (scanType == "room") {
+    angle = 600;
+    verAngle = 1900; // or 1800
+    verAngleStop = 1150;
+    angleFrom = 600;
+    angleTo = 2400;
+  }
 
   pointArray[1] = mapStartVerAngle;
   for (int i = 0; i < 5; i = i + 1) {
