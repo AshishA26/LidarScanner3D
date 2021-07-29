@@ -22,12 +22,13 @@ const int HEADER = 0x59;
 #define SAMPLES 5
 
 // defines variables
-int angle = 600; // For short scan, I did 1350, for room 600, for sofa 1150
-int verAngle = 1800; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
-int verAngleStop = 1150; //For short scan I did 1500, for room 1150, for sofa 1550
-int angleFrom = 600; // for short scan, I did 1350, for room 600, for sofa 1150
-int angleTo = 2400; // for short scan, I did 1700, for room 2400, for sofa 1900
+int angle = 1150; // For short scan, I did 1350, for room 600, for sofa 1150
+int verAngle = 2000; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
+int verAngleStop = 1550; //For short scan I did 1500, for room 1150, for sofa 1550
+int angleFrom = 1150; // for short scan, I did 1350, for room 600, for sofa 1150
+int angleTo = 1900; // for short scan, I did 1700, for room 2400, for sofa 1900
 int horizonDelay = 50;
+String scanType = "sofa"; // say either room or sofa
 long duration;
 int distance;
 int pointArray[3];
@@ -38,7 +39,6 @@ int mapStartVerAngle;
 void setup() {
   Serial.begin(115200); // Starts the serial communication
   Serial3.begin(115200);
-  // Serial.print("start");
 
   // Attach the Servo variable to a pin:
   servo1.attach(9);
@@ -53,7 +53,10 @@ void setup() {
   mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
 
   pointArray[1] = mapStartVerAngle;
-  delay(1000);
+  for (int i = 0; i < 5; i = i + 1) {
+    Serial.print(scanType);
+    delay(1000);
+  }
 }
 
 void loop() {
@@ -87,14 +90,14 @@ void loop() {
 }
 //Move vertical servo up by one degree
 void MoveUp() {
-   if (verAngle >= verAngleStop) {
-     verAngle = verAngle - 7;
-     servo2.writeMicroseconds(verAngle);
-     mapVerAngle = verAngle;
-     mapVerAngle = map(mapVerAngle, 500, 2500, 180, -90);
-     pointArray[1] = mapVerAngle;
-     delay(20);
-   }
+  if (verAngle >= verAngleStop) {
+    verAngle = verAngle - 7;
+    servo2.writeMicroseconds(verAngle);
+    mapVerAngle = verAngle;
+    mapVerAngle = map(mapVerAngle, 500, 2500, 180, -90);
+    pointArray[1] = mapVerAngle;
+    delay(20);
+  }
 }
 
 int LidarReading() {
@@ -116,7 +119,7 @@ int LidarReading() {
         }
       }
     }
-  } 
+  }
   delay(10);
   return -1;
 }
@@ -135,11 +138,11 @@ float SmoothLidarReading() {
 }
 
 void printArray() {
-    for (int i = 0; i < 3; i++) {
-      Serial.print(pointArray[i]);
-      if (i != 2) {
-        Serial.print(" ");
-      }
+  for (int i = 0; i < 3; i++) {
+    Serial.print(pointArray[i]);
+    if (i != 2) {
+      Serial.print(" ");
     }
-    Serial.println();
+  }
+  Serial.println();
 }
