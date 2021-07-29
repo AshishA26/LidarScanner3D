@@ -52,9 +52,11 @@ void setup() {
   servo2.writeMicroseconds(verAngle);
   pointArray[0] = 0;
 
+  // Sends correct mapped angle to serial
   mapStartVerAngle = verAngle;
   mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
 
+  // Changes values and ranges based on the scan type
   if (scanType == "sofa") {
     angle = 1150;
     verAngle = 2000;
