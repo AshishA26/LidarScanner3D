@@ -47,15 +47,6 @@ void setup() {
   servo1.attach(9);
   servo2.attach(10);
 
-  //Tell servo to go to this angle
-  servo1.writeMicroseconds(angle);
-  servo2.writeMicroseconds(verAngle);
-  pointArray[0] = 0;
-
-  // Sends correct mapped angle to serial
-  mapStartVerAngle = verAngle;
-  mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
-
   // Changes values and ranges based on the scan type
   if (scanType == "sofa") {
     angle = 1150;
@@ -71,7 +62,15 @@ void setup() {
     angleFrom = 600;
     angleTo = 2400;
   }
+  
+  //Tell servo to go to this angle
+  servo1.writeMicroseconds(angle);
+  servo2.writeMicroseconds(verAngle);
+  pointArray[0] = 0;
 
+  // Sends correct mapped angle to serial
+  mapStartVerAngle = verAngle;
+  mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
   pointArray[1] = mapStartVerAngle;
   for (int i = 0; i < 5; i = i + 1) {
     Serial.print(scanType);
