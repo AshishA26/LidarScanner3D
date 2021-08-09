@@ -1,24 +1,22 @@
-//#include <PWMServo.h>
-
-//*************************************************3D RADAR CODE*************************************************//
+//*************************************************3D RADAR CODE with GARMIN LIDAR LITE V3*************************************************//
 
 //************************************************************************//
 
 // Include libraries:
 #include <Servo.h>
+#include <Wire.h>
+#include <LIDARLite.h>
 
 // Create a new servo object:
 Servo servo1;
 Servo servo2;
 
-int dist;
-int strength;
-int check;
-int uart[9];
+// Lidar Variables
+LIDARLite lidarLite;
+int cal_cnt = 0;
 int i;
-const int HEADER = 0x59;
 #define LIDAR_MIN_DIST 0
-#define LIDAR_MAX_DIST 1200 // in cm
+#define LIDAR_MAX_DIST 4000 // in cm
 #define SAMPLES 5
 
 // This value changes the ranges and everything
@@ -40,8 +38,10 @@ int mapVerAngle;
 int mapStartVerAngle;
 
 void setup() {
-  Serial.begin(115200); // Starts the serial communication
-  Serial3.begin(115200);
+  Serial.begin(9600); // Starts the serial communication
+
+  lidarLite.begin(0, true); // Set configuration to default and I2C to 400 kHz
+  lidarLite.configure(0); // Change this number to try out alternate configurations
 
   // Attach the Servo variable to a pin:
   servo1.attach(9);
@@ -62,7 +62,7 @@ void setup() {
     angleFrom = 600;
     angleTo = 2400;
   }
-  
+
   //Tell servo to go to this angle
   servo1.writeMicroseconds(angle);
   servo2.writeMicroseconds(verAngle);
@@ -107,7 +107,8 @@ void loop() {
     MoveUp();
   }
 }
-//Move vertical servo up by one degree
+
+//Move vertical servo up
 void MoveUp() {
   if (verAngle >= verAngleStop) {
     verAngle = verAngle - 7;
@@ -121,26 +122,23 @@ void MoveUp() {
 
 int LidarReading() {
   // Returns distance in centimeters
-  if (Serial3.available()) {
-    if (Serial3.read() == HEADER) {
-      uart[0] = HEADER;
-      if (Serial3.read() == HEADER) {
-        uart[1] = HEADER;
-        for (i = 2; i < 9; i++) {
-          uart[i] = Serial3.read();
-        }
-        check = uart[0] + uart[1] + uart[2] + uart[3] + uart[4] + uart[5] + uart[6] + uart[7];
-        if (uart[8] == (check & 0xff)) {
-          dist = uart[2] + uart[3] * 256;
-          //strength = uart[4] + uart[5] * 256;
-          return dist;
+  int dist;
 
-        }
-      }
-    }
+  // At the beginning of every 100 readings,
+  // take a measurement with receiver bias correction
+  if ( cal_cnt == 0 ) {
+    dist = lidarLite.distance();      // With bias correction
+  } else {
+    dist = lidarLite.distance(false); // Without bias correction
   }
+
+  // Increment reading counter
+  cal_cnt++;
+  cal_cnt = cal_cnt % 100;
+
+  // Return Dist
+  return dist;
   delay(10);
-  return -1;
 }
 
 float SmoothLidarReading() {
