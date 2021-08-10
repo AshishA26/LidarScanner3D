@@ -1,0 +1,3 @@
+When trying to load:
+- Remember to rename the .sav file to ScanDataSave.sav
+- It goes in \LidarScanner3D\LidarScannerUE4\Saved\SaveGames
