@@ -20,14 +20,14 @@ int i;
 #define SAMPLES 5
 
 // This value changes the ranges and everything
-String scanType = "sofa"; // say either room or sofa
+String scanType = "Nothing"; // say either room or sofa
 
 // defines variables
-int angle = 1150; // For short scan, I did 1350, for room 600, for sofa 1150
-int verAngle = 2000; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
-int verAngleStop = 1550; //For short scan I did 1500, for room 1150, for sofa 1550
-int angleFrom = 1150; // for short scan, I did 1350, for room 600, for sofa 1150
-int angleTo = 1900; // for short scan, I did 1700, for room 2400, for sofa 1900
+int angle; // For short scan, I did 1350, for room 600, for sofa 1150
+int verAngle; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
+int verAngleStop; //For short scan I did 1500, for room 1150, for sofa 1550
+int angleFrom; // for short scan, I did 1350, for room 600, for sofa 1150
+int angleTo; // for short scan, I did 1700, for room 2400, for sofa 1900
 
 int horizonDelay = 50;
 long duration;
@@ -46,23 +46,30 @@ void setup() {
   // Attach the Servo variable to a pin:
   servo1.attach(9);
   servo2.attach(10);
-
+  //Serial.println("Going to start");
+  while (scanType.equals("Nothing") || scanType.equals("")) {
+    scanType = Serial.readString();
+    //Serial.println("scantype = " + scanType);  
+  }
+  scanType.trim(); //Removes white space
   // Changes values and ranges based on the scan type
-  if (scanType == "sofa") {
+  if (scanType.equals("sofa")) {
     angle = 1150;
     verAngle = 2000;
     verAngleStop = 1550;
     angleFrom = 1150;
     angleTo = 1900;
   }
-  else if (scanType == "room") {
+  else if (scanType.equals("room")) {
     angle = 600;
     verAngle = 1900; // or 1800
     verAngleStop = 1150;
     angleFrom = 600;
     angleTo = 2400;
   }
-
+  else {
+    Serial.println("I got nothing");
+  }
   //Tell servo to go to this angle
   servo1.writeMicroseconds(angle);
   servo2.writeMicroseconds(verAngle);
@@ -73,7 +80,7 @@ void setup() {
   mapStartVerAngle = map(mapStartVerAngle, 500, 2500, 180, -90);
   pointArray[1] = mapStartVerAngle;
   for (int i = 0; i < 5; i = i + 1) {
-    Serial.print(scanType);
+    Serial.println(scanType);
     delay(1000);
   }
 }
