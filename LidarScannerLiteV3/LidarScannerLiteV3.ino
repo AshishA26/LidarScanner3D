@@ -46,12 +46,13 @@ void setup() {
   // Attach the Servo variable to a pin:
   servo1.attach(9);
   servo2.attach(10);
-  //Serial.println("Going to start");
+
+  // Gets the scan type from unreal engine
   while (scanType.equals("Nothing") || scanType.equals("")) {
     scanType = Serial.readString();
-    //Serial.println("scantype = " + scanType);  
   }
   scanType.trim(); //Removes white space
+
   // Changes values and ranges based on the scan type
   if (scanType.equals("sofa")) {
     angle = 1150;
@@ -68,8 +69,9 @@ void setup() {
     angleTo = 2400;
   }
   else {
-    Serial.println("I got nothing");
+    Serial.println("No scan type set, please retry");
   }
+  
   //Tell servo to go to this angle
   servo1.writeMicroseconds(angle);
   servo2.writeMicroseconds(verAngle);

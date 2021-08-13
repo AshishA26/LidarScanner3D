@@ -1,6 +1,4 @@
-//#include <PWMServo.h>
-
-//*************************************************3D RADAR CODE*************************************************//
+//*************************************************3D RADAR CODE with TFMINI PLUS*************************************************//
 
 //************************************************************************//
 
@@ -22,14 +20,14 @@ const int HEADER = 0x59;
 #define SAMPLES 5
 
 // This value changes the ranges and everything
-String scanType = "sofa"; // say either room or sofa
+String scanType = "Nothing"; // say either room or sofa
 
 // defines variables
-int angle = 1150; // For short scan, I did 1350, for room 600, for sofa 1150
-int verAngle = 2000; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
-int verAngleStop = 1550; //For short scan I did 1500, for room 1150, for sofa 1550
-int angleFrom = 1150; // for short scan, I did 1350, for room 600, for sofa 1150
-int angleTo = 1900; // for short scan, I did 1700, for room 2400, for sofa 1900
+int angle; // For short scan, I did 1350, for room 600, for sofa 1150
+int verAngle; // For short scan I did 1850, for room 1900, or 1800, for sofa 2000
+int verAngleStop; //For short scan I did 1500, for room 1150, for sofa 1550
+int angleFrom; // for short scan, I did 1350, for room 600, for sofa 1150
+int angleTo; // for short scan, I did 1700, for room 2400, for sofa 1900
 
 int horizonDelay = 50;
 long duration;
@@ -47,20 +45,29 @@ void setup() {
   servo1.attach(9);
   servo2.attach(10);
 
+  // Gets the scan type from unreal engine
+  while (scanType.equals("Nothing") || scanType.equals("")) {
+    scanType = Serial.readString();
+  }
+  scanType.trim(); //Removes white space
+
   // Changes values and ranges based on the scan type
-  if (scanType == "sofa") {
+  if (scanType.equals("sofa")) {
     angle = 1150;
     verAngle = 2000;
     verAngleStop = 1550;
     angleFrom = 1150;
     angleTo = 1900;
   }
-  else if (scanType == "room") {
+  else if (scanType.equals("room")) {
     angle = 600;
     verAngle = 1900; // or 1800
     verAngleStop = 1150;
     angleFrom = 600;
     angleTo = 2400;
+  }
+  else {
+    Serial.println("No scan type set, please retry");
   }
   
   //Tell servo to go to this angle
