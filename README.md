@@ -1,19 +1,21 @@
 # LidarScanner3D
 Made using Arduino and Unreal Engine 4.
+*Compiled exe is available in the releases of this repository.*
+
 ### Description
 This program and setup that I have created from scratch allows you to create and map a point cloud using LIDAR, Arduino, and Unreal Engine. The angle calculations and many bug fixes have been done to ensure the best performance is there when in use.
 
 ## Instructions
 - Hook up everything to the arduino based on the ciruit diagrams below
 - Depending on the type of LIDAR, upload that code to arduino
-- Open the Unreal Engine exe file (found on the releases page), specify com port, baud rate, scan type and go from there
+- Run the Unreal Engine .exe file , specify com port, baud rate, scan type and go from there
 
 ## Help
 When trying to load in Unreal Engine 4:
 - Remember to rename the .sav file to ScanDataSave.sav
-- It goes in \LidarScanner3D\LidarScannerUE4\Saved\SaveGames
+- It goes in .\LidarScanner3D\LidarScannerUE4\Saved\SaveGames
 
-When trying to load in the LidarScanner compiled exe:
+When trying to load in the LidarScanner compiled .exe file:
 - Go to .\LidarScannerUE4Compiled\LidarScanner\Saved\SaveGames and find ScanDataSave.sav
 - Note: This file has the point cloud data
 - If wanted, copy or move it out into a different folder to keep for later and can rename it to something like "room.sav"
