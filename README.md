@@ -35,7 +35,9 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 ![sofa5e](https://user-images.githubusercontent.com/44419439/129427281-ced7c289-f0f8-4092-92e8-e0e0079b49da.png)
 
 ### Using Lidar Lite V3
-*Coming Soon*
+![sofaLiteV3d](https://user-images.githubusercontent.com/44419439/129435652-80d78f99-d1dd-4499-afa8-33a7493f6a58.png)![sofaLiteV3a](https://user-images.githubusercontent.com/44419439/129435653-24178754-fbf7-4407-9de5-917243b70714.png)
+![sofaLiteV3c](https://user-images.githubusercontent.com/44419439/129435655-1f7691a0-1eae-4c95-998a-8fab4911a48f.png)
+
 
 ## Lidar Frame Pictures
 ![IMG_20210803_111621](https://user-images.githubusercontent.com/44419439/129431828-7d3091e6-1d95-4b54-9bde-9fd300abb350.jpg)
