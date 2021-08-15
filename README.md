@@ -1,9 +1,9 @@
 # LidarScanner3D
 Made using Arduino and Unreal Engine 4.
+
 *Compiled exe is available in the releases of this repository.*
 
-### Description
-This program and setup that I have created from scratch allows you to create and map a point cloud using LIDAR, Arduino, and Unreal Engine. The angle calculations and many bug fixes have been done to ensure the best performance is there when in use.
+This program and setup that I have created from scratch allows you to create and map a point cloud using LIDAR, Arduino, and Unreal Engine. The real time visualization tool was made in Unreal Engine, and the LIDAR interfaced with the Arduino Mega using UART communication protocol. The angle calculations and many bug fixes have been done to ensure the best performance is there when in use.
 
 ## Instructions
 - Hook up everything to the arduino based on the ciruit diagrams below
