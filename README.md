@@ -38,7 +38,7 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 ![sofaLiteV3d](https://user-images.githubusercontent.com/44419439/129435652-80d78f99-d1dd-4499-afa8-33a7493f6a58.png)![sofaLiteV3a](https://user-images.githubusercontent.com/44419439/129435653-24178754-fbf7-4407-9de5-917243b70714.png)
 ![sofaLiteV3c](https://user-images.githubusercontent.com/44419439/129435655-1f7691a0-1eae-4c95-998a-8fab4911a48f.png)
 
-## The Making Story
+## The Making Story (plus additional pictures)
 
 When I started this project, my initial idea was to get a 2D radar working which would use one servo, one ultrasonic sonar, and an arduino, and that would be it. But then, I got a better idea of making a 3D Radar which would create point clouds and map out objects. The first thing I tried to do was use a sonar, 2 of the basic small servos (like these https://www.amazon.ca/Miuzei-Helicopter-Airplane-Remote-Control/dp/B07H85M78M/ref=sr_1_1_sspa), and a wooden block. I would need 2 servos so that one could allow horizontal turning, and one the allows verical scanning. 
 
@@ -65,5 +65,10 @@ It was here I encountered 3 problems:
 3. And the biggest problem was that the servos were jittering a lot, and sometimes continously turning 360 degrees when the servos aren't even programmed to do so
 
 ### Problem #1
+
+I read online that ultrasonic sonars are not very good for trying to get accurate results.
+
 ### Problem #2
 ### Problem #3
+
+*More coming soon*
