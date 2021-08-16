@@ -4,6 +4,9 @@ Made using Arduino and Unreal Engine 4.
 *Compiled exe is available in the releases of this repository.*
 
 This program and setup that I have created from scratch allows you to create and map a point cloud using LIDAR, Arduino, and Unreal Engine. The real time visualization tool was made in Unreal Engine, and the LIDAR interfaced with the Arduino Mega using UART and I2C communication protocol. The angle calculations and many bug fixes have been done to ensure the best performance is there when in use.
+## The Making Story
+
+When I started this project, my initial idea was to get a 2D radar working which would use one servo, one ultrasonic sonar, and an arduino, and that would be it. But I then got a better idea of making a 3D Radar which would create point clouds and map out objects. The first thing I tried to do was use a sonar, 2 of the basic small servos (like these https://www.amazon.ca/Miuzei-Helicopter-Airplane-Remote-Control/dp/B07H85M78M/ref=sr_1_1_sspa), and a wooden block. I would need 2 servos so that one could allow horizontal scanning, and the second would allow vertical scanning.
 
 ## Instructions
 - Hook up everything to the arduino based on the ciruit diagrams below
