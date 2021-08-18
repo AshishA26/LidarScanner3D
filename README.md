@@ -8,7 +8,7 @@ This program and setup that I have created from scratch allows you to create and
 ## Instructions
 - Hook up everything to the arduino based on the ciruit diagrams below
 - Depending on the type of LIDAR, upload that code to arduino
-- Run the Unreal Engine .exe file , specify com port, baud rate, scan type and go from there
+- Run the LidarScanner.exe file , specify com port, baud rate, scan type and go from there
 
 ## Help
 When trying to load in Unreal Engine 4:
