@@ -39,8 +39,17 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 ![sofaLiteV3c](https://user-images.githubusercontent.com/44419439/129435655-1f7691a0-1eae-4c95-998a-8fab4911a48f.png)
 
 ## Frame Pictures
+### First Prototype Frame
+*Coming Soon*
 
-This aluminum frame was hand built and designed by me. It allows for easy portability, rotation, and great stability.
+### New Frame
+This new and improved aluminum frame was hand built and designed by me. It allows for easy portability, rotation, and great stability.
 
-![IMG_20210803_111654](https://user-images.githubusercontent.com/44419439/129431829-83f5ee40-ab1a-4a06-a8d2-78cf1221d6fd.jpg)
-![IMG_20210803_111621](https://user-images.githubusercontent.com/44419439/129431828-7d3091e6-1d95-4b54-9bde-9fd300abb350.jpg)
+![LidarScannerPic1](./Pics/LidarScannerPic1.jpg)
+![LidarScannerPic2](./Pics/LidarScannerPic2.jpg)
+
+## Point calculations
+
+Here is a picture of the angle calculations I did for finding the exact location of the point relative to the LIDAR.
+
+![PointCalculation](./Pics/PointCalculation.jpg)
