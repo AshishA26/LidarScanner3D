@@ -22,7 +22,10 @@ When trying to load in the LidarScanner compiled .exe file:
 - To load back in, name the file as ScanDataSave.sav and move it to the "SaveGames" folder
 
 ## Circuit Diagrams (made by me using Fritzing)
-Circuit Diagram for Lidar Lite V3 (the wiring from the Lite V3 is based on the colors in the diagram):
+Circuit Diagram for Lidar Lite V3 using perfboard:
+![ArduinoLidarLiteV3PerfboardDiagram](./Pics/ArduinoLidarLiteV3PerfboardDiagram.png )
+
+Circuit Diagram for Lidar Lite V3 using breadboard:
 ![ArduinoLidarLiteV3Diagram](./Pics/ArduinoLidarLiteV3Diagram.png)
 
 Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the colors in the diagram):
@@ -41,7 +44,8 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 
 ## Frame Pictures
 ### First Frame (Prototype V1)
-*Coming Soon*
+![LidarScannerPic4](./Pics/LidarScannerPic4.jpg)
+![LidarScannerPic3](./Pics/LidarScannerPic3.jpg)
 
 ### New Frame (V2)
 This new and improved aluminum frame was hand built and designed by me. It allows for easy portability, rotation, and great stability.
