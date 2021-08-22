@@ -32,15 +32,18 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 ![ArduinoLidarTFMiniDiagram](./Pics/ArduinoLidarTFMiniDiagram.png)
 
 ## Scan Pictures
-### Using TFMini Plus:
-![sofa5c](./SavedScans/Screenshots/sofa5c.png)
-![sofa5d](./SavedScans/Screenshots/sofa5d.png)
-![sofa5e](./SavedScans/Screenshots/sofa5e.png)
-
 ### Using Lidar Lite V3:
+(Scan of a sofa)
+![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
 ![sofaLiteV3d](./SavedScans/Screenshots/sofaLiteV3d.png)
 ![sofaLiteV3a](./SavedScans/Screenshots/sofaLiteV3a.png)
 ![sofaLiteV3c](./SavedScans/Screenshots/sofaLiteV3c.png)
+
+### Using TFMini Plus:
+(Scan of a sofa)
+![sofa5c](./SavedScans/Screenshots/sofa5c.png)
+![sofa5d](./SavedScans/Screenshots/sofa5d.png)
+![sofa5e](./SavedScans/Screenshots/sofa5e.png)
 
 ## Frame Pictures
 ### First Frame (Prototype V1)
