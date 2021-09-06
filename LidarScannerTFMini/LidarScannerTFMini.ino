@@ -128,7 +128,7 @@ void MoveUp() {
 
 int LidarReading() {
   // Returns distance in centimeters
-  if (Serial3.available()) {
+  if (Serial3.available()>=9) { // >=9 is very important to make sure it has all 9 bytes for UART to work, otherwise it would return -1 and the calculations would be wrong.
     if (Serial3.read() == HEADER) {
       uart[0] = HEADER;
       if (Serial3.read() == HEADER) {
