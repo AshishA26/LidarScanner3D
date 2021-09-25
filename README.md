@@ -5,6 +5,9 @@ Made using Arduino and Unreal Engine 4.
 
 This program and setup that I have created from scratch allows you to create and map a point cloud using LIDAR, Arduino, and Unreal Engine. The real time visualization tool was made in Unreal Engine, and the LIDAR interfaced with the Arduino Mega using UART and I2C communication protocol. The angle calculations and many bug fixes have been done to ensure the best performance is there when in use.
 
+Scan of a sofa using a Lidar Lite V3:
+![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
+
 ## Instructions
 - Hook up everything to the arduino based on the ciruit diagrams below
 - Depending on the type of LIDAR, upload that code to arduino
@@ -34,8 +37,6 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 ## Scan Pictures
 ### Using Lidar Lite V3:
 The white cylindrical thing is the location the LIDAR is scanning from. Below is a scan of a sofa:
-
-![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
 ![sofaLiteV3d](./SavedScans/Screenshots/sofaLiteV3d.png)
 ![sofaLiteV3a](./SavedScans/Screenshots/sofaLiteV3a.png)
 ![sofaLiteV3c](./SavedScans/Screenshots/sofaLiteV3c.png)
