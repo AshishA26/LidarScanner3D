@@ -1,3 +1,6 @@
+# By Ashish Agrahari
+# https://github.com/AshishA26
+
 import serial
 import time
 import numpy as np
