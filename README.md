@@ -36,7 +36,7 @@ Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the
 
 ## Frame Pictures
 ### First Frame (Prototype V1)
-![LidarScannerPic4](./Pics/LidarScannerPic4.jpg)
+![LidarScannerPic4](./Pics/LidarScannerPic5.jpg)
 ![LidarScannerPic3](./Pics/LidarScannerPic3.jpg)
 
 ### New Frame (V2)
@@ -48,4 +48,4 @@ This new and improved aluminum frame was hand built and designed by me. It allow
 ## Point calculations
 Here is a picture of the angle calculations I did for finding the exact location of the point relative to the LIDAR:
 
-![PointCalculation](./Pics/PointCalculation.jpg)
+![PointCalculation](./Pics/PointCalculationNew.jpg)
