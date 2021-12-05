@@ -8,6 +8,9 @@ This program and setup that I have created from scratch allows you to create and
 Scan of a sofa using a Lidar Lite V3 (the white cylindrical thing is the location the LIDAR is scanning from):
 ![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
 
+Demonstration of the Lidar rotation with real-time mapping visuals:
+![ScanningGif](./Pics/ScanningGif.gif)
+
 ## Instructions
 - Hook up everything to the arduino based on the ciruit diagrams below
 - Depending on the type of LIDAR, upload that code to arduino
