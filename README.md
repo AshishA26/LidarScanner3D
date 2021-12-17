@@ -1,54 +1,53 @@
 # LidarScanner3D
-Made using Arduino and Unreal Engine 4.
 
-*Compiled exe is available in the releases of this repository.*
+I designed and implemented a system from scratch which allows you to map a point cloud of your environment and nearby objects using LIDAR, Arduino, and Unreal Engine 4. 
 
-This program and setup that I have created from scratch allows you to create and map a point cloud using LIDAR, Arduino, and Unreal Engine. The real time visualization tool was made in Unreal Engine, and the LIDAR interfaced with the Arduino Mega using UART and I2C communication protocol. The angle calculations and many bug fixes have been done to ensure the best performance is there when in use.
+I made the real time visualization tool using Unreal Engine and interfaced the LIDAR with an Arduino Mega using UART and I2C communication protocols.
 
-Scan of a sofa using a Lidar Lite V3 (the white cylindrical thing is the location the LIDAR is scanning from):
+Example scan of a sofa using a Lidar Lite-V3 (the white color in the middle is the location this scanning system):
 ![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
 
-Demonstration of the Lidar rotation with real-time mapping visuals:
+Demonstration of the Lidar rotation with real-time mapping display:
 ![ScanningGif](./Pics/ScanningGif.gif)
 
-## Instructions
-- Hook up everything to the arduino based on the ciruit diagrams below
-- Depending on the type of LIDAR, upload that code to arduino
-- Run the LidarScanner.exe file , specify com port, baud rate, scan type and go from there
+## Instructions to Run
+- Hook everything up to the Arduino according to the [circuit  diagrams below](#circuit-diagrams)
+- Upload the appropriate Arduino code, depending on which LIDAR you are using
+- Run the `LidarScanner.exe` application, specify `Com Port`, `baud rate`, `scan type` and go from there
 
-## Help
-When trying to load in Unreal Engine 4:
-- Remember to rename the .sav file to ScanDataSave.sav
-- It goes in .\LidarScanner3D\LidarScannerUE4\Saved\SaveGames
+*Note: The `exe` is available in the releases of this repository.*
 
-When trying to load in the LidarScanner compiled .exe file:
-- Go to .\LidarScannerUE4Compiled\LidarScanner\Saved\SaveGames and find ScanDataSave.sav
-- Note: This file has the point cloud data
-- If wanted, copy or move it out into a different folder to keep for later and can rename it to something like "room.sav"
-- To load back in, name the file as ScanDataSave.sav and move it to the "SaveGames" folder
+## Help/Tips
+When trying to load a previously saved scan into Unreal Engine 4 project:
+- Remember to rename the `.sav` file to `ScanDataSave.sav`
+- The file goes in `.\LidarScanner3D\LidarScannerUE4\Saved\SaveGames`
 
-## Circuit Diagrams (made by me using Fritzing)
-Circuit Diagram for Lidar Lite V3 using perfboard:
+When trying to load a previously saved scan into the comipled `LidarScanner.exe`:
+- Go to `.\LidarScannerUE4Compiled\LidarScanner\Saved\SaveGames` and find `ScanDataSave.sav`
+    - Note: This file has the point cloud data
+- If wanted, copy or move it out into a different folder to keep for later and can rename it to something like `room.sav`
+- To load back in, name the file as `ScanDataSave.sav` and move it to the `SaveGames` folder
+
+## Circuit Diagrams
+
+I have interfaced the Lidar Lite V3 and TFMini Plus Lidar range finders with an Arduino Mega. I chose to do this using a perfboard for easy development and modularity. Some circuit schematics I made in Fritzing are shown below:
+
+For Lidar Lite V3 using perfboard:
 ![ArduinoLidarLiteV3PerfboardDiagram](./Pics/ArduinoLidarLiteV3PerfboardDiagram.png )
 
-Circuit Diagram for Lidar Lite V3 using breadboard:
+For Lidar Lite V3 using breadboard:
 ![ArduinoLidarLiteV3Diagram](./Pics/ArduinoLidarLiteV3Diagram.png)
 
-Circuit Diagram for TFMini Plus (the wiring from the TFMini Plus is based on the colors in the diagram):
+For TFMini Plus:
 ![ArduinoLidarTFMiniDiagram](./Pics/ArduinoLidarTFMiniDiagram.png)
+ (Note: Replace the Sonar in the diagram with a TFMini Plus. The wiring from the TFMini Plus is based on the colors in the diagram).
 
-## Frame Pictures
-### First Frame (Prototype V1)
-![LidarScannerPic4](./Pics/LidarScannerPic5.jpg)
-![LidarScannerPic3](./Pics/LidarScannerPic3.jpg)
-
-### New Frame (V2)
-This new and improved aluminum frame was hand built and designed by me. It allows for easy portability, rotation, and great stability.
+## Mechanical Design 
+Although I made the [first prototype out of wood](./Pics/LidarScannerPic5.jpg), the final design for the Lidar pan-and-tilt was hand built from Aluminum plates. It allows for easy portability, rotation, and great stability.
 
 ![LidarScannerPic1](./Pics/LidarScannerPic1.jpg)
 ![LidarScannerPic2](./Pics/LidarScannerPic2.jpg)
 
 ## Point calculations
-Here is a picture of the angle calculations I did for finding the exact location of the point relative to the LIDAR:
-
+The LIDAR sensor measures a distance to the object, and the current orientation of this sensor is given by the servo positions. The angle calculations I did for finding the exact location of the point relative to the LIDAR in 3D Space using vector geometry are shown below:
 ![PointCalculation](./Pics/PointCalculationNew.jpg)
