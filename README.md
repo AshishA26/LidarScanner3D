@@ -4,6 +4,8 @@ I designed and implemented a system from scratch which allows you to map a point
 
 I made the real time visualization tool using Unreal Engine and interfaced the LIDAR with an Arduino Mega using UART and I2C communication protocols.
 
+In order for the Arduino to communicate with Unreal Engine 4, I used the "UE4Duino" plugin created by [RVillani](https://github.com/RVillani/UE4Duino).
+
 Example scan of a sofa using a Lidar Lite-V3 (the white color in the middle is the location this scanning system):
 ![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
 
