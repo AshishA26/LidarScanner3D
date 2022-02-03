@@ -30,9 +30,18 @@ When trying to load a previously saved scan into the comipled `LidarScanner.exe`
 - If wanted, copy or move it out into a different folder to keep for later and can rename it to something like `room.sav`
 - To load back in, name the file as `ScanDataSave.sav` and move it to the `SaveGames` folder
 
+## Mechanical Design 
+Although I made the [first prototype out of wood](./Pics/LidarScannerPic5.jpg), the final design for the Lidar pan-and-tilt was hand built from Aluminum plates. It allows for easy portability, rotation, and great stability.
+
+![LidarScannerPic1](./Pics/LidarScannerPic1.jpg)
+
+There are 2 servos needed in order to achieve the scan. Servo 1 is placed right side up allowing the Lidar to rotate horizontally from side to side, and Servo 2 is placed sideways on Servo 1 allowing the Lidar to tilt vertically. To achieve a scan that fixes the tilt in the placement data, calculations have been done as shown [below](#point-calculations).
+
 ## Circuit Diagrams
 
 I have interfaced the Lidar Lite V3 and TFMini Plus Lidar range finders with an Arduino Mega. I chose to do this using a perfboard for easy development and modularity. Some circuit schematics I made in Fritzing are shown below:
+
+![CircuitPicture](./Pics/PerfboardPic1.jpg)
 
 For Lidar Lite V3 using perfboard:
 ![ArduinoLidarLiteV3PerfboardDiagram](./Pics/ArduinoLidarLiteV3PerfboardDiagram.png )
@@ -44,11 +53,9 @@ For TFMini Plus:
 ![ArduinoLidarTFMiniDiagram](./Pics/ArduinoLidarTFMiniDiagram.png)
  (Note: Replace the Sonar in the diagram with a TFMini Plus. The wiring from the TFMini Plus is based on the colors in the diagram).
 
-## Mechanical Design 
-Although I made the [first prototype out of wood](./Pics/LidarScannerPic5.jpg), the final design for the Lidar pan-and-tilt was hand built from Aluminum plates. It allows for easy portability, rotation, and great stability.
+## Note:
 
-![LidarScannerPic1](./Pics/LidarScannerPic1.jpg)
-![LidarScannerPic2](./Pics/LidarScannerPic2.jpg)
+For more pictures and diagrams, see the [Pics folder](https://github.com/AshishA26/LidarScanner3D/tree/main/Pics) of this repo.
 
 ## Point calculations
 The LIDAR sensor measures a distance to the object, and the current orientation of this sensor is given by the servo positions. The angle calculations I did for finding the exact location of the point relative to the LIDAR in 3D Space using vector geometry are shown below:
