@@ -53,8 +53,6 @@ For TFMini Plus:
 ![ArduinoLidarTFMiniDiagram](./Pics/ArduinoLidarTFMiniDiagram.png)
  (Note: Replace the Sonar in the diagram with a TFMini Plus. The wiring from the TFMini Plus is based on the colors in the diagram).
 
-## Note:
-
 For more pictures and diagrams, see the [Pics folder](https://github.com/AshishA26/LidarScanner3D/tree/main/Pics) of this repo.
 
 ## Point calculations
