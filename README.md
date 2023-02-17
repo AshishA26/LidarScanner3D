@@ -6,7 +6,7 @@ I made the real time visualization tool using Unreal Engine and interfaced the L
 
 In order for the Arduino to communicate with Unreal Engine 4, I used the "UE4Duino" plugin created by [RVillani](https://github.com/RVillani/UE4Duino).
 
-Example scan of a sofa using a Lidar Lite-V3 (the white color in the middle is the location this scanning system):
+Example scan of a sofa using a Lidar Lite-V3 (the white color in the middle is the location of the scanning system):
 ![LiteV3LoadGif](./Pics/LiteV3LoadGif.gif)
 
 Demonstration of the Lidar rotation with real-time mapping display:
@@ -24,7 +24,7 @@ When trying to load a previously saved scan into Unreal Engine 4 project:
 - Remember to rename the `.sav` file to `ScanDataSave.sav`
 - The file goes in `.\LidarScanner3D\LidarScannerUE4\Saved\SaveGames`
 
-When trying to load a previously saved scan into the comipled `LidarScanner.exe`:
+When trying to load a previously saved scan into the compiled `LidarScanner.exe`:
 - Go to `.\LidarScannerUE4Compiled\LidarScanner\Saved\SaveGames` and find `ScanDataSave.sav`
     - Note: This file has the point cloud data
 - If wanted, copy or move it out into a different folder to keep for later and can rename it to something like `room.sav`
